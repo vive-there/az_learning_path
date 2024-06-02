@@ -29,19 +29,27 @@ docker tag mcr.microsoft.com/hello-world $ACR_REGISTRY_NAME.azurecr.io/hello-wor
 # push image to ACR
 docker push $ACR_REGISTRY_NAME.azurecr.io/hello-world:1.0
 
+az acr repository list --name $ACR_REGISTRY_NAME
+
 # delete local image if needed
 docker rmi $ACR_REGISTRY_NAME.azurecr.io/hello-world:1.0
 
 # pull from ACR to local
 docker pull $ACR_REGISTRY_NAME.azurecr.io/hello-world:1.0
 
-az acr repository list --name $ACR_REGISTRY_NAME
+# run
+docker run $ACR_REGISTRY_NAME.azurecr.io/hello-world:1.0
+
+echo "Show usage ${ACR_REGISTRY_NAME}"
+az acr show-usage --name $ACR_REGISTRY_NAME -g $RESOURCE_GROUP
 
 echo "Press any key to delete resource group $RESOURCE_GROUP ..."
 read -s -n 1
 
+echo "Sleep"
 sleep 1
 
+echo "Delete resource group ${RESOURCE_GROUP}"
 az group delete --name $RESOURCE_GROUP --no-wait --yes
 az group list -o table
 
