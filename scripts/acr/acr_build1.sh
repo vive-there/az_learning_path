@@ -7,7 +7,7 @@ ACR_REGISTRY_NAME="vivethereacrbuild1"$RANDOM_SUFFIX
 APP_NAME=vthelloacrtasks
 APP_VER=1.0
 KEYVAULT_NAME=vivetherekv$RANDOM_SUFFIX
-# Service principal name for PULL roly
+# Service principal name for PULL role
 SP_PULL="${ACR_REGISTRY_NAME}-pull"
 
 
