@@ -21,6 +21,6 @@ az acr task create \
 --registry $ACR_REGISTRY_NAME \
 --name helloworldtask \
 --image helloworld:{{.Run.ID}} \
---file Dockerfil \
+--file Dockerfile \
 --context https://github.com/${GIT_USER}/acr-build-helloworld-node#master \
 --git-access-token ${GIT_PAT}
