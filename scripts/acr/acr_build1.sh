@@ -85,7 +85,8 @@ az container create \
 --query "{FQDN:ipAddress.fqdn}" \
 --output table
 
-
+echo "RESOURCE GROUP  ${RESOURCE_GROUP}"
+echo "ACR REGISTRY NAME ${ACR_REGISTRY_NAME}"
 
 
 
