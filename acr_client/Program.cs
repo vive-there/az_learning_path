@@ -5,12 +5,7 @@ using Azure.Containers.ContainerRegistry;
 using Azure.Identity;
 
 var environmentRegistryEndpoint=Environment.GetEnvironmentVariable("REGISTRY_ENDPOINT");
-Console.WriteLine($"env={environmentRegistryEndpoint}");
-if(string.IsNullOrWhiteSpace(environmentRegistryEndpoint))
-{
-    environmentRegistryEndpoint=args[0];
-    Console.WriteLine($"env={environmentRegistryEndpoint}");
-}
+Console.WriteLine($"REGISTRY_ENDPOINT eq {environmentRegistryEndpoint}");
 
 // Get the service endpoint from the environment
 Uri endpoint = new Uri(environmentRegistryEndpoint);

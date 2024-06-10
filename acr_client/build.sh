@@ -31,6 +31,8 @@ docker rmi alpine:latest ${ACR_REGISTRY_NAME}.azurecr.io/myalpine:0.1 --force
 #dotnet new gitignore
 #dotnet add package Azure.Containers.ContainerRegistry --prerelease
 
-dotnet build acr_client.csproj -c Release -r linux-x64 --self-contained true
+dotnet build ${HOME}/azure/repos/az_learning_path/acr_client/acr_client.csproj -c Release -r linux-x64 --self-contained true
 chmod u+x ${HOME}/azure/repos/az_learning_path/acr_client/bin/Release/net8.0/linux-x64/acr_client
-${HOME}/azure/repos/az_learning_path/acr_client/bin/Release/net8.0/linux-x64/acr_client "https://${ACR_REGISTRY_NAME}.azurecr.io"
+export REGISTRY_ENDPOINT="https://${ACR_REGISTRY_NAME}.azurecr.io"
+echo $REGISTRY_ENDPOINT
+${HOME}/azure/repos/az_learning_path/acr_client/bin/Release/net8.0/linux-x64/acr_client 
