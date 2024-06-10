@@ -28,8 +28,8 @@ az acr build \
 --registry $ACR_REGISTRY_NAME \
 --resource-group $RESOURCE_GROUP \
 --image ${APP_NAME}:${APP_VER} \
---file ~/azure/repos/acr-build-helloworld-node/Dockerfile \
-~/azure/repos/acr-build-helloworld-node/.
+--file ${HOME}/azure/repos/acr-build-helloworld-node/Dockerfile \
+${HOME}/azure/repos/acr-build-helloworld-node/.
 
 # Deploy to Azure Container Instances
 echo "Create keyvault ${KEYVAULT_NAME}"
