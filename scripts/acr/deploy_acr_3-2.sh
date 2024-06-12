@@ -81,8 +81,27 @@ az webapp config appsettings set \
 --resource-group ${RESOURCE_GROUP} \
 --settings WEBSITES_PORT=8080
 
+az webapp log config \
+--name ${WEBAPP_NAME} \
+--resource-group ${RESOURCE_GROUP} \
+--docker-container-logging filesystem
 
+#Enable CI/CD in webapp
+CI_CD_URL=$(echo $(az webapp deployment container config --name ${WEBAPP_NAME} --resource-group ${RESOURCE_GROUP} --enable-cd true --query CI_CD_URL -o tsv) | tr -d "\t\r\n ")
 
+#Create webhook in ACR
+WEBHOOK_NAME=webhookacrhelloworld$RANDOM_SUFFIX
+az acr webhook create \
+--resource-group ${RESOURCE_GROUP} \
+--name ${WEBHOOK_NAME} \
+--registry ${ACR_REGISTRY_NAME} \
+--actions push \
+--uri ${CI_CD_URL} \
+--scope ${DOCKER_IMAGE_WITH_TAG}
+
+#test webhook
+eventId=$(echo $(az acr webhook ping --name ${WEBHOOK_NAME} --registry ${ACR_REGISTRY_NAME} --resource-group ${RESOURCE_GROUP} --query id --output tsv) | tr -d "\t\r\n ")
+az acr webhook list-events --name ${WEBHOOK_NAME} --registry ${ACR_REGISTRY_NAME} --resource-group ${RESOURCE_GROUP}  --query "[?id=='$eventId'].eventResponseMessage"
 
 
 

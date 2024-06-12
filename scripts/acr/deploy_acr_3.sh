@@ -101,7 +101,10 @@ WEBAPP_CONFIG_ID=$(echo $(az webapp config show --name ${WEBAPP_NAME} --resource
 #Set the client ID your web app uses to pull from Azure Container Registry. This step isn't needed if you use the system-assigned managed identity.
 az resource update --ids ${WEBAPP_CONFIG_ID} --set properties.AcrUserManagedIdentityID=${UAID_CLIENTID}
 
-
+az webapp log config \
+--name ${WEBAPP_NAME} \
+--resource-group ${RESOURCE_GROUP} \
+--docker-container-logging filesystem
 
 
 
