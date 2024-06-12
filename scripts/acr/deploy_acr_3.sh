@@ -80,7 +80,8 @@ az webapp create \
 --name ${WEBAPP_NAME} \
 --resource-group ${RESOURCE_GROUP} \
 --plan ${APPSERVICE_PLAN_NAME} \
---container-image-name ${ACR_REGISTRY_NAME}.azurecr.io/${DOCKER_IMAGE_WITH_TAG}
+--container-image-name ${ACR_REGISTRY_NAME}.azurecr.io/${DOCKER_IMAGE_WITH_TAG} \
+--acr-use-identity
 
 #Container is listening on port 8080 for web requests, and you configure the app to send requests to port 8080.
 az webapp config appsettings set \
@@ -96,7 +97,7 @@ az webapp identity assign \
 
 WEBAPP_CONFIG_ID=$(echo $(az webapp config show --name ${WEBAPP_NAME} --resource-group ${RESOURCE_GROUP} --query id --output tsv) | tr -d "\t\r\n ")
 #Configure your app to pull from Azure Container Registry by using managed identities.
-az resource update --ids ${WEBAPP_CONFIG_ID} --set properties.AcrUseManagedIdentityCreds=True
+#az resource update --ids ${WEBAPP_CONFIG_ID} --set properties.AcrUseManagedIdentityCreds=True
 #Set the client ID your web app uses to pull from Azure Container Registry. This step isn't needed if you use the system-assigned managed identity.
 az resource update --ids ${WEBAPP_CONFIG_ID} --set properties.AcrUserManagedIdentityID=${UAID_CLIENTID}
 
