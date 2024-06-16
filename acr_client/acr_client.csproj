@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove=".gitignore" />
     <None Remove="build.sh" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Containers.ContainerRegistry" Version="1.2.0-beta.1" />
-    <PackageReference Include="Azure.Identity" Version="1.11.3" />
+    <PackageReference Include="Azure.Containers.ContainerRegistry" Version="1.1.1" />
+    <PackageReference Include="Azure.Identity" Version="1.11.4" />
   </ItemGroup>
 
 </Project>
