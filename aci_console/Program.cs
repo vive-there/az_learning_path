@@ -9,7 +9,7 @@ namespace aci_console
 {
     internal class Program
     {
-        private const string ResourceGroupName = "sdktest105_rg";
+        private const string ResourceGroupName = "sdktest106_rg";
         private const string ContainerName = "aci-helloworld";
         static IConfigurationRoot _configuration;
         static ArmClient _armClient;
