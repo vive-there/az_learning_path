@@ -12,5 +12,5 @@ az container create \
 --file ./scripts/aci/multi_container_group.yaml
 
 az container show --resource-group ${RESOURCE_GROUP} --name vtContainerGroup --output table
- az container logs --resource-group ${RESOURCE_GROUP} --name vtContainerGroup --container-name aci-tutorial-app
- az container logs --resource-group ${RESOURCE_GROUP} --name vtContainerGroup --container-name aci-tutorial-sidecar
+az container logs --resource-group ${RESOURCE_GROUP} --name vtContainerGroup --container-name aci-tutorial-app
+az container logs --resource-group ${RESOURCE_GROUP} --name vtContainerGroup --container-name aci-tutorial-sidecar
