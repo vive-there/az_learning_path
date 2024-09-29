@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "acr_client", "acr_client\acr_client.csproj", "{5BA8BB36-D63D-4DD3-8705-B4CE7BD03239}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aci_console", "aci_console\aci_console.csproj", "{49A3969B-9A8C-4F00-A324-0EE21D032B8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aci_console", "aci_console\aci_console.csproj", "{49A3969B-9A8C-4F00-A324-0EE21D032B8B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlobQs", "az204_sa\BlobQs\BlobQs.csproj", "{89969264-7592-4B6E-9D61-59DA3EA14ACE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{49A3969B-9A8C-4F00-A324-0EE21D032B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49A3969B-9A8C-4F00-A324-0EE21D032B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A3969B-9A8C-4F00-A324-0EE21D032B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89969264-7592-4B6E-9D61-59DA3EA14ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89969264-7592-4B6E-9D61-59DA3EA14ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89969264-7592-4B6E-9D61-59DA3EA14ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89969264-7592-4B6E-9D61-59DA3EA14ACE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
