@@ -1,25 +1,32 @@
-﻿using System;
-using System.IO;
+﻿using System.ComponentModel;
 using System.Text;
 
 using Azure.Identity;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 
-const string BLOB_CLINET_ENDPOINT = "https://[storage account name].blob.core.windows.net/";
+if(args.Length !=2 )
+{
+    Console.WriteLine("Please provied Azure Stroage Account Name");
+    return;
+}
 
-var blobServiceClient = new BlobServiceClient(
-    new Uri(BLOB_CLINET_ENDPOINT),
-    new DefaultAzureCredential()
-);
-
-GetAllContainers(blobServiceClient);
-
-//Create a unique name for the container
-string containerName = "quickstartblobs" + Guid.NewGuid().ToString("n");
 
 try
 {
+
+    var storageAccountName = $"https://{args[1]?.Trim()}.blob.core.windows.net/";
+
+    var blobServiceClient = new BlobServiceClient(
+        new Uri(storageAccountName),
+        new DefaultAzureCredential()
+    );
+
+    GetAllContainers(blobServiceClient);
+
+    //Create a unique name for the container
+    string containerName = "quickstartblobs" + Guid.NewGuid().ToString("n");
+
     var containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName).ConfigureAwait(false);
 
     var blobName = $"blob{Guid.NewGuid().ToString("n")}";
@@ -47,14 +54,13 @@ try
 }
 catch(Azure.RequestFailedException rfe)
 {
-    Console.WriteLine($"Creating {containerName} container failed. {rfe.Message}");
+    Console.WriteLine(rfe.Message);
     return;
 }
-
-//containerClient.Value?.
-
-GetAllContainers(blobServiceClient);
-
+catch(Exception e)
+{
+    Console.WriteLine(e.Message);
+}
 
 
 static void GetAllContainers(BlobServiceClient blobServiceClient)
