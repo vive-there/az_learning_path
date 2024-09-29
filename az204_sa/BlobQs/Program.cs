@@ -5,7 +5,7 @@ using Azure.Identity;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 
-if(args.Length !=2 )
+if(args.Length != 1)
 {
     Console.WriteLine("Please provied Azure Stroage Account Name");
     return;
@@ -15,7 +15,7 @@ if(args.Length !=2 )
 try
 {
 
-    var storageAccountName = $"https://{args[1]?.Trim()}.blob.core.windows.net/";
+    var storageAccountName = $"https://{args[0]?.Trim()}.blob.core.windows.net/";
 
     var blobServiceClient = new BlobServiceClient(
         new Uri(storageAccountName),
