@@ -1,0 +1,27 @@
+{
+    "rules":[
+        {
+            "name":"test-container",
+            "enabled": true,
+            "type": "Lifecycle",
+            "definition":{
+              "actions"  :{
+                "baseBlob":{
+                    "tierToCold":{
+                        "daysAfterModificationGreaterThan": 1
+                    },
+                    "delete":{
+                        "daysAfterModificationGreaterThan": 3
+                    }
+                }
+              },
+              "filters":{
+                "blobTypes":["blockBlob"],
+                "prefixMatch":[
+                    "test"
+                ]
+              }
+            }
+        }
+    ]
+}
