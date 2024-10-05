@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "BlobEncryptionKeyVault": {
+      "commandName": "Project"
+    }
+  }
+}
