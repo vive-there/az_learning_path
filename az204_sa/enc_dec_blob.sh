@@ -6,6 +6,7 @@ RG_NAME=az204_sa${RANDOM_SUFFIX}
 SA_NAME=vivetheresa${RANDOM_SUFFIX}
 KV_NAME=vivetherekv${RANDOM_SUFFIX}
 KV_KEY_NAME=sakey
+SA_CONTAINER_NAME=test
 
 USER_ID=$(echo $(az ad signed-in-user show --query id -o tsv) | tr -d '\t\r\n')
 
@@ -45,6 +46,18 @@ az storage account create \
 --kind StorageV2 \
 --sku Standard_LRS
 
+sleep 10s
+
+az storage container create \
+--account-name ${SA_NAME} \
+--name ${SA_CONTAINER_NAME}
+
+SA_ID=$(echo $(az storage account show --name ${SA_NAME} --resource-group ${RG_NAME} --query id -o tsv) | tr -d '\t\r\n')
+az role assignment create \
+--scope ${SA_ID} \
+--role "Storage Blob Data Contributor" \
+--assignee-object-id ${USER_ID} \
+--assignee-principal-type User
 
 
 
