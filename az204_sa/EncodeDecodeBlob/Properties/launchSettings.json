@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "EncodeDecodeBlob": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "AZURE_TENANT_ID": "",
+        "KEYVAULT_NAME": "",
+        "SA_NAME": ""
+      }
+    }
+  }
+}
